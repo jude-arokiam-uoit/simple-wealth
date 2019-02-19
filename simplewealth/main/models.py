@@ -32,3 +32,20 @@ class Stocks(models.Model):
 
 	def __str__(self):
 		return self.symbol
+
+class Transactions(models.Model):
+	TRANSACTION_TYPE_CHOICES = (
+		('+', 'Buy'),
+		('-', 'Sell'),
+	)
+
+	user = models.ForeignKey(Users, on_delete=models.CASCADE)
+	stock = models.ForeignKey(Stocks, on_delete=models.CASCADE)
+	timestamp = models.DateTimeField(auto_now_add=True)
+	amount = models.FloatField(default=0)
+
+	transaction_type = models.CharField(
+		max_length=2,
+		choices = TRANSACTION_TYPE_CHOICES, 
+		default = "+",
+	)
