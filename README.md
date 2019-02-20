@@ -12,7 +12,7 @@ $ sudo apt install virtualenv
 $ python3 -m venv ~/simple-wealth-env
 ```
 
-Activate the virtual environment you just created and install the required packages found in the root of this repository in **requirement.txt**.
+Activate the virtual environment you just created and install the required packages found in the root of this repository in **requirements.txt**.
 
 ```bash
 $ source ~/simple-wealth-env/bin/activate
@@ -28,4 +28,4 @@ $ cd simple-wealth
 $ python manage.py runserver
 ```
 
-Now that the server is running you can go to your browser and enter `http://localhost:8000/`. You have now entered _Simple Wealth_!
+Now that the server is running you can go to your browser and enter http://localhost:8000/. You have now entered _Simple Wealth_!
