@@ -1,0 +1,34 @@
+{% extends "main/header.html" %}
+{% block content %}
+{% load static %}
+<img id='simple' src="{% static 'simple.png' %}"></br>
+<h2>Simple Wealth</h2>
+<label>Current Available Funds: </label>
+<label>$5000</label>
+<button type="button" id='sell'>Sell Stocks</button>
+<button type="button" id='buy'>Buy Stocks</button>
+<div id='stocks'>
+	<label id='title'>Stocks (Top)</label></br>
+	<ul>
+		<li>APPL</li>
+		<li>MFST</li>
+		<li>INTC</li>
+		<li>APPL</li>
+		<li>APPL</li>
+		<li>APPL</li>
+		<li>APPL</li>
+		<li>APPL</li>
+		<li>APPL</li>
+		<li>APPL</li>
+	</ul>
+</div>
+<div id="activity">
+	<label>Recent Activity</label>
+	<ul>
+		<li>Bought 50 APPL</li>
+		<li>Sold 2 TDT</li>
+	</ul>
+</div>
+<div id="graph">
+</div>
+{% endblock %}

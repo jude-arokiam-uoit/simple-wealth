@@ -4,9 +4,14 @@
 <head>
 	<title>Simple Wealth</title>
 	<meta charset="utf-8" />
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" type="text/css"/>
+	{% load static%}
+	<link rel="stylesheet" href="{% static 'dash.css' %}" type="text/css">
+	<!-- <script type="text/javascript" src="login.js"/> -->
 </head>
 
-<body class="body" style="background-color:#f6f6f6">
+<body class="body" style="background-color:#FFFFFF">
 	<div>
 	   {% block content %}
 	   {% endblock %}	

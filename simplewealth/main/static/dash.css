@@ -1,0 +1,60 @@
+ul{
+  list-style-type: none
+}
+#simple{
+  width: 20%;
+  height: 20%;
+  float:left;
+}
+#stocks{
+  float: left;
+  width: 20%;
+  height: 20%;
+  border: 1px black solid;
+  background-color: lightblue;
+  clear:both;
+  margin: 0% 0em 0 1.5%;
+}
+#stocks ul{
+  
+}
+li{
+  padding-left:-2em;
+}
+#funds{
+  clear: left;
+}
+#activity{
+    float:right;
+    width: 20%;
+    height: 20%;
+    border: 1px black solid;
+    background-color: lightblue;
+    margin: 0% 1.5% 0 0;
+}
+#graph{
+    width: 40%;
+    height: 40%;
+    border: 1px black solid;
+    background-color: lightblue;
+    padding: 10% 0 10% 0;
+    margin: 8.5% 0em 5% 30%;
+}
+#buy{
+  float:right;
+}
+#sell{
+  float: right;
+}
+#simp{
+  margin: 0% 0% 0% -2%;
+  width: 30%;
+}
+#login{
+  margin: 10% 0em 8% 35%;
+  /*border: 1px black solid;
+  ba*/ckground-color: lightblue;
+}
+#log{
+  margin: 2% 0% 0% 10%;
+}
