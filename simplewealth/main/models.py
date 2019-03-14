@@ -12,6 +12,7 @@ class Users(models.Model):
 
 	user_id = models.AutoField(primary_key=True)
 	username = models.CharField(max_length=20)
+	password = models.CharField(max_length=20)
 	first_name = models.CharField(max_length=20)
 	last_name = models.CharField(max_length=20)
 	risk_status = models.CharField(max_length=2,
@@ -21,7 +22,7 @@ class Users(models.Model):
 	sector_breakdown = models.CharField(max_length=100)
 
 	def __str__(self):
-		return self.username
+		return str(self.user_id) + " " + self.username
 
 class Stocks(models.Model):
 	symbol = models.CharField(primary_key=True, max_length=5)
@@ -39,6 +40,7 @@ class Transactions(models.Model):
 		('-', 'Sell'),
 	)
 
+	transaction_id = models.AutoField(primary_key=True)
 	user = models.ForeignKey(Users, on_delete=models.CASCADE)
 	stock = models.ForeignKey(Stocks, on_delete=models.CASCADE)
 	timestamp = models.DateTimeField(auto_now_add=True)
