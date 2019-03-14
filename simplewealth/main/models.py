@@ -10,8 +10,7 @@ class Users(models.Model):
 		(LO, 'Low'),
 	)
 
-	user_id = models.AutoField(primary_key=True)
-	username = models.CharField(max_length=20)
+	username = models.CharField(primary_key=True, max_length=20)
 	password = models.CharField(max_length=20)
 	first_name = models.CharField(max_length=20)
 	last_name = models.CharField(max_length=20)
@@ -23,6 +22,29 @@ class Users(models.Model):
 
 	def __str__(self):
 		return str(self.user_id) + " " + self.username
+
+class Shares(models.Model):
+	username = models.ForeignKey(Users, on_delete=models.CASCADE, primary_key=True)
+	TD = models.PositiveSmallIntegerField(default = 0)
+	JPM = models.PositiveSmallIntegerField(default = 0)
+	V = models.PositiveSmallIntegerField(default = 0)
+	BRKB = models.PositiveSmallIntegerField(default = 0)
+	AAPL = models.PositiveSmallIntegerField(default = 0)
+	MSFT = models.PositiveSmallIntegerField(default = 0)
+	AMZN = models.PositiveSmallIntegerField(default = 0)
+	FB = models.PositiveSmallIntegerField(default = 0)
+	ENB = models.PositiveSmallIntegerField(default = 0)
+	TRP = models.PositiveSmallIntegerField(default = 0)
+	XOM = models.PositiveSmallIntegerField(default = 0)
+	CVX = models.PositiveSmallIntegerField(default = 0)
+	BA = models.PositiveSmallIntegerField(default = 0)
+	UNP = models.PositiveSmallIntegerField(default = 0)
+	UTX = models.PositiveSmallIntegerField(default = 0)
+	TSLA = models.PositiveSmallIntegerField(default = 0)
+	PG = models.PositiveSmallIntegerField(default = 0)
+	KO = models.PositiveSmallIntegerField(default = 0)
+	MCD = models.PositiveSmallIntegerField(default = 0)
+	WMT = models.PositiveSmallIntegerField(default = 0)
 
 class Stocks(models.Model):
 	symbol = models.CharField(primary_key=True, max_length=5)
