@@ -21,7 +21,7 @@ class Users(models.Model):
 	sector_breakdown = models.CharField(max_length=100)
 
 	def __str__(self):
-		return str(self.user_id) + " " + self.username
+		return self.username
 
 class Shares(models.Model):
 	username = models.ForeignKey(Users, on_delete=models.CASCADE, primary_key=True)
@@ -66,7 +66,7 @@ class Transactions(models.Model):
 	user = models.ForeignKey(Users, on_delete=models.CASCADE)
 	stock = models.ForeignKey(Stocks, on_delete=models.CASCADE)
 	timestamp = models.DateTimeField(auto_now_add=True)
-	amount = models.FloatField(default=0)
+	number_of_shares = models.FloatField(default=0)
 
 	transaction_type = models.CharField(
 		max_length=2,
