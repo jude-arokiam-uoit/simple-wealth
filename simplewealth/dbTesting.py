@@ -106,6 +106,13 @@ def get_user_stocks(username):
 
 	return user_stocks
 
+def empty_all_tables():
+	Users.objects.all().delete()
+	Stocks.objects.all().delete()
+	Transactions.objects.all().delete()
+	Shares.objects.all().delete()
+
+#empty_all_tables()
 #Users.objects.all().delete()
 #create_user("1005559999", "1005559999", "mit", "jud", 1, 100.0)
 # perform_transaction("1005559999", "TD", 5, "+")
