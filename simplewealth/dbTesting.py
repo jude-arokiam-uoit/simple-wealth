@@ -23,6 +23,21 @@ def create_user(username, password, first_name, last_name, risk_status, cash_amo
 	new_user.save()
 	init_share.save()
 
+def populate_shares(username, risk_status, cash_amount,
+	stock1,stock2,stock3,stock4,stock5,
+	stock6,stock7,stock8,stock9,stock10,
+	stock11,stock12,stock13,stock14,stock15,
+	stock16,stock17,stock18,stock19,stock20):
+	share = Shares.objects.get(username = username)
+	share.risk_status = risk_status
+	share.cash_amount = cash_amount
+	share.TD = stock1; share.JPM = stock2; share.V = stock3; share.BRKB = stock4; share.AAPL = stock5;
+	share.MSFT = stock6; share.AMZN = stock7; share.FB = stock8; share.ENB = stock9; share.TRP = stock10;
+	share.XOM = stock11; share.CVX = stock12; share.BA = stock13; share.UNP = stock14; share.UTX = stock15;
+	share.TSLA = stock16; share.PG = stock17; share.KO = stock18; share.MCD = stock19; share.WMT = stock20;
+
+	share.save()
+
 def create_all_stocks():
 	for x in stocks:
 		create_stock(x,stock_info.getStockCompany(x),stock_info.getStockPrice(x),stock_info.getStockPercentChange(x),stock_info.getStockVWAP(x))
@@ -91,8 +106,10 @@ def get_user_stocks(username):
 
 	return user_stocks
 
-# Users.objects.all().delete()
-# create_user("1005559999", "1005559999", "mit", "jud", 1, 100.0)
+#Users.objects.all().delete()
+#create_user("1005559999", "1005559999", "mit", "jud", 1, 100.0)
 # perform_transaction("1005559999", "TD", 5, "+")
 # print(get_table_array(Shares))
 # print(get_user_stocks("1005559999"))
+#populate_shares("1005559999", 1, 1000.0, 1,1,1,1,1,1,1,1,1,1,12,1,1,1,1,14,1,1,1,1)
+#print(get_table_array(Shares))
