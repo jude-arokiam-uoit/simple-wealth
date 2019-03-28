@@ -17,19 +17,9 @@ def create_stock(symbol, company, current_price, change_percentage, vwap):
 	new_stock = Stocks(symbol=symbol, company=company, current_price=current_price, change_percentage=change_percentage, vwap=vwap)
 	new_stock.save()
 
-def create_share(username,stock1,stock2,stock3,stock4,stock5,
-					stock6,stock7,stock8,stock9,stock10,
-					stock11,stock12,stock13,stock14,stock15,
-					stock16,stock17,stock18,stock19,stock20):
-	new_share = Shares(username = username, stock1=stock1,stock2=stock2,stock3=stock3,stock4=stock4,stock5=stock5,
-					stock6=stock6,stock7=stock7,stock8=stock8,stock9=stock9,stock10=stock10,
-					stock11=stock11,stock12=stock12,stock13=stock13,stock14=stock14,stock15=stock15,
-					stock16=stock16,stock17=stock17,stock18=stock18,stock19=stock19,stock20=stock20)
-	new_share.save()
-	
 def create_user(username, password, first_name, last_name, risk_status, cash_amount):
 	new_user = Users(username=username,password=password,first_name=first_name,last_name=last_name,risk_status=risk_status,cash_amount=cash_amount)
-	init_share = Shares(new_user.username)
+	init_share = Shares(username = new_user, risk_status = new_user.risk_status, cash_amount = new_user.cash_amount)
 	new_user.save()
 	init_share.save()
 
@@ -85,7 +75,7 @@ def perform_transaction(username, symbol, shares, transaction_type):
 #get_user_stocks returns all the user's currently owned stock
 #list of lists containing stock symbol, stock name, number of shares owned, and current stock price
 def get_user_stocks(username):
-	counter = -1
+	column = 1
 
 	shares = Shares.objects.filter(username = username).values_list()
 	shares_array = shares[::1]
@@ -93,15 +83,16 @@ def get_user_stocks(username):
 
 	for i in shares_array:
 		for j in i:
-			if j > 3 and j != username:
-				user_stocks.append([stocks[counter], stock_info.getStockCompany(stocks[counter]), str(j), str(stock_info.getStockPrice(stocks[counter]))])
-			counter+=1	
+			if column > 3 and j!=0:
+				user_stocks.append([stocks[column-4], stock_info.getStockCompany(stocks[column-4]), str(j), str(stock_info.getStockPrice(stocks[column-4]))])
+			column+=1
+
+		column = 0			
 
 	return user_stocks
 
-#print(get_user_stocks("100553756"))
-#perform_transaction("100553756", "FB", 5, "+")
-#pprint.pprint(get_user_stocks("100553756"))
-#print(get_last_ten_transactions())
-#print(get_table_array(Shares))
-#print(get_table_array(Stocks))
+# Users.objects.all().delete()
+# create_user("1005559999", "1005559999", "mit", "jud", 1, 100.0)
+# perform_transaction("1005559999", "TD", 5, "+")
+# print(get_table_array(Shares))
+# print(get_user_stocks("1005559999"))

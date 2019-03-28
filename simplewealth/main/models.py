@@ -1,22 +1,11 @@
 from django.db import models
 
 class Users(models.Model):
-	HI = "hi"
-	MED = "med"
-	LO = "lo"
-	RISK_STATUS_CHOICES = (
-		(HI, 'High'),
-		(MED, 'Medium'),
-		(LO, 'Low'),
-	)
-
 	username = models.CharField(primary_key=True, max_length=20)
 	password = models.CharField(max_length=20)
 	first_name = models.CharField(max_length=20)
 	last_name = models.CharField(max_length=20)
-	risk_status = models.CharField(max_length=2,
-		choices = RISK_STATUS_CHOICES, default = MED,
-	)
+	risk_status = models.PositiveSmallIntegerField(default = 0)
 	cash_amount = models.FloatField(default=0)
 	sector_breakdown = models.CharField(max_length=100)
 
@@ -25,6 +14,8 @@ class Users(models.Model):
 
 class Shares(models.Model):
 	username = models.ForeignKey(Users, on_delete=models.CASCADE, primary_key=True)
+	risk_status = models.PositiveSmallIntegerField(default = 0)
+	cash_amount = models.FloatField(default=0)	
 	TD = models.PositiveSmallIntegerField(default = 0)
 	JPM = models.PositiveSmallIntegerField(default = 0)
 	V = models.PositiveSmallIntegerField(default = 0)
