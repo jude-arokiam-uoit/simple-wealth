@@ -1,9 +1,9 @@
 from django.db import models
 
 class Users(models.Model):
-	HI = "Hi"
-	MED = "Med"
-	LO = "Lo"
+	HI = "hi"
+	MED = "med"
+	LO = "lo"
 	RISK_STATUS_CHOICES = (
 		(HI, 'High'),
 		(MED, 'Medium'),

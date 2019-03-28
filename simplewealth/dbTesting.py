@@ -17,8 +17,18 @@ def create_stock(symbol, company, current_price, change_percentage, vwap):
 	new_stock = Stocks(symbol=symbol, company=company, current_price=current_price, change_percentage=change_percentage, vwap=vwap)
 	new_stock.save()
 
-def create_user(username, password, first_name, last_name, risk_status, cash_amount, sector):
-	new_user = Users(username=username,password=password,first_name=first_name,last_name=last_name,risk_status=risk_status,cash_amount=cash_amount,sector_breakdown=sector)
+def create_share(username,stock1,stock2,stock3,stock4,stock5,
+					stock6,stock7,stock8,stock9,stock10,
+					stock11,stock12,stock13,stock14,stock15,
+					stock16,stock17,stock18,stock19,stock20):
+	new_share = Shares(username = username, stock1=stock1,stock2=stock2,stock3=stock3,stock4=stock4,stock5=stock5,
+					stock6=stock6,stock7=stock7,stock8=stock8,stock9=stock9,stock10=stock10,
+					stock11=stock11,stock12=stock12,stock13=stock13,stock14=stock14,stock15=stock15,
+					stock16=stock16,stock17=stock17,stock18=stock18,stock19=stock19,stock20=stock20)
+	new_share.save()
+	
+def create_user(username, password, first_name, last_name, risk_status, cash_amount):
+	new_user = Users(username=username,password=password,first_name=first_name,last_name=last_name,risk_status=risk_status,cash_amount=cash_amount)
 	init_share = Shares(new_user.username)
 	new_user.save()
 	init_share.save()
@@ -26,6 +36,7 @@ def create_user(username, password, first_name, last_name, risk_status, cash_amo
 def create_all_stocks():
 	for x in stocks:
 		create_stock(x,stock_info.getStockCompany(x),stock_info.getStockPrice(x),stock_info.getStockPercentChange(x),stock_info.getStockVWAP(x))
+
 def get_all_transactions():
 	print(Transactions.objects.all().values_list())
 
@@ -82,12 +93,13 @@ def get_user_stocks(username):
 
 	for i in shares_array:
 		for j in i:
-			if j > 1 and j != username:
+			if j > 3 and j != username:
 				user_stocks.append([stocks[counter], stock_info.getStockCompany(stocks[counter]), str(j), str(stock_info.getStockPrice(stocks[counter]))])
 			counter+=1	
 
 	return user_stocks
 
+#print(get_user_stocks("100553756"))
 #perform_transaction("100553756", "FB", 5, "+")
 #pprint.pprint(get_user_stocks("100553756"))
 #print(get_last_ten_transactions())
