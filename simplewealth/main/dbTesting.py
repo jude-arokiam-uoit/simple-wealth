@@ -4,7 +4,6 @@ import datetime
 import stock_info
 import numpy as np
 import pprint
-import matplotlib.pyplot as plt
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "simplewealth.settings")
 django.setup()
@@ -117,6 +116,9 @@ def get_user_stocks(username):
 def get_user_stocks_raw(username):
 	return Shares.objects.filter(username = username).values_list()[0]
 
+def get_user(username):
+	return Users.objects.filter(username = username)
+
 def empty_all_tables():
 	Users.objects.all().delete()
 	Stocks.objects.all().delete()
@@ -125,9 +127,6 @@ def empty_all_tables():
 
 def empty_auth():
 	User.objects.all().delete()
-
-def get_user(username):
-	return Users.objects.filter(username = username)
 
 def get_user_stocks_and_price(username):
 	column = 1

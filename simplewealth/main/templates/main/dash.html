@@ -4,31 +4,25 @@
 <img id='simple' src="{% static 'simple.png' %}"></br>
 <h2>Simple Wealth</h2>
 <label>Current Available Funds: </label>
-<label>$5000</label>
-<button type="button" id='sell'>Sell Stocks</button>
-<button type="button" id='buy'>Buy Stocks</button>
+<label>{{cash}}</label>
+<button type="button" id='sell'>Buy or Sell Stocks</button>
 <div id='stocks'>
-	<label id='title'>Stocks (Top)</label></br>
+	<label id='title'>Owned Stocks</label></br>
 	<ul>
-		<li>TD</li>
-		<li>JPM</li>
-		<li>V</li>
-		<li>BRK.B</li>
-		<li>APPL</li>
-		<li>MSFT</li>
-		<li>AMZN</li>
-		<li>FB</li>
-		<li>ENB</li>
-		<li>TRP</li>
+		{% for k,n in last %}
+		<li>{{k}} - {{n}}</li>
+		{% endfor %}
 	</ul>
 </div>
 <div id="activity">
-	<label>Recent Activity</label>
+	<label>Reccomended Stocks</label>
 	<ul>
-		<li>Bought 50 APPL</li>
-		<li>Sold 2 TDT</li>
+		{% for k,n in last %}
+		<li>{{k}} - {{n}}</li>
+		{% endfor %}
 	</ul>
 </div>
 <div id="graph">
+	<img id='pie' src="{% static 'pie.jpg' %}">
 </div>
 {% endblock %}
