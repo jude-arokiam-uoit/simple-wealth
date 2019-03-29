@@ -336,7 +336,7 @@ def get_recommendations(username):
 # MAIN END
 #-------------------------------------------------------------------------------
 
-username = 'ronjandreau'
+username = 'lawrenceselfridge'
 recommendations = get_recommendations(username)
 
 print('Recommendations for ', username, ':')

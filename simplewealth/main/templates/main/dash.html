@@ -9,7 +9,7 @@
 <div id='stocks'>
 	<label id='title'>Owned Stocks</label></br>
 	<ul>
-		{% for k,n in last %}
+		{% for k,n in stocks %}
 		<li>{{k}} - {{n}}</li>
 		{% endfor %}
 	</ul>
@@ -17,8 +17,9 @@
 <div id="activity">
 	<label>Reccomended Stocks</label>
 	<ul>
-		{% for k,n in last %}
-		<li>{{k}} - {{n}}</li>
+		{% for k,n,m in reccomend %}
+		<li>{{m}} - {{k}}: {{n}}</li>
+		<li></li>
 		{% endfor %}
 	</ul>
 </div>

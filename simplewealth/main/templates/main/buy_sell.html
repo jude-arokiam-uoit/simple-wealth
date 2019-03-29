@@ -6,15 +6,17 @@
 <label>Current Available Funds: </label>
 <label>{{cash}}</label>
 <br />
-<label>Buy or Sell</label>
-<input type="radio" id='sell'>Sell</input>
-<input type="radio" id='buy'>Buy</input>
-<br />
-<label>stock symbol</label>
-<input type="text" name="stock">
-<br />
-<label>Stock amount</label>
-<input type="text" name="numStock">
-<br />
-<button>Complete Transaction</button>
+<form method="post">
+	<label>Buy or Sell</label>
+	<input type="radio" id='sell'>Sell</input>
+	<input type="radio" id='buy'>Buy</input>
+	<br />
+	<label>stock symbol</label>
+	<input type="text" name="stock">
+	<br />
+	<label>Stock amount</label>
+	<input type="text" name="numStock">
+	<br />
+	<button>Complete Transaction</button>
+</form>
 {% endblock %}
