@@ -9,7 +9,7 @@ def index(request):
 
 def dash(request):
 	user = request.user
-	user = get_user("isaaccarone")
+	user = get_user(user.username)
 	U_stocks = get_user_stocks_and_price(user.values_list()[0][0])
 	stocks = []
 	names = []
