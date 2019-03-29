@@ -10,6 +10,7 @@ django.setup()
 
 from main.models import Users, Stocks, Transactions, Shares
 from django.db.models import Count
+from django.contrib.auth.models import User
 
 stocks = ["TD","JPM","V","BRK.B","AAPL","MSFT","AMZN","FB","ENB","TRP","XOM","CVX","BA","UNP","UTX","TSLA","PG","KO","MCD","WMT"]
 
@@ -22,6 +23,9 @@ def create_user(username, password, first_name, last_name, risk_status, cash_amo
 	init_share = Shares(username = new_user, risk_status = new_user.risk_status, cash_amount = new_user.cash_amount)
 	new_user.save()
 	init_share.save()
+
+def create_auth(username, password, first_name, last_name, risk_status, cash_amount):
+	User.objects.create_user(username=username,password=password,first_name=first_name,last_name=last_name,is_superuser=True,email="no@gmail.com",is_staff=True,is_active=True,date_joined="2018-03-10 12:12:00")
 
 def populate_shares(username, risk_status, cash_amount,
 	stock1,stock2,stock3,stock4,stock5,
@@ -117,6 +121,9 @@ def empty_all_tables():
 	Stocks.objects.all().delete()
 	Transactions.objects.all().delete()
 	Shares.objects.all().delete()
+
+def empty_auth():
+	User.objects.all().delete()
 
 #empty_all_tables()
 #Users.objects.all().delete()
