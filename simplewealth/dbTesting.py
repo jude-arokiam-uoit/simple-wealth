@@ -106,6 +106,12 @@ def get_user_stocks(username):
 
 	return user_stocks
 
+# get_user_stocks_raw returns all the user's currently owned stock in the raw 
+# format stored in the database table
+#list containing stock symbol, stock name, number of shares owned, and current stock price
+def get_user_stocks_raw(username):
+	return Shares.objects.filter(username = username).values_list()[0]
+
 def empty_all_tables():
 	Users.objects.all().delete()
 	Stocks.objects.all().delete()
