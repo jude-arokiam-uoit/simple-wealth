@@ -306,34 +306,39 @@ def predict(data, dt):
 	return list(print_leaf(classify(data, dt)))[0]
 
 # ------------------------------------------------------------------------------
-# SCRIPT START
+# MAIN START
 #-------------------------------------------------------------------------------
 # extract user stock info from database
-username = sys.argv[1]
-user_data = dbTesting.get_user_stocks_raw(username)
 
-# generate training and test data
-training_data = generate_training()
-test_data = generate_test(user_data)
-dt = build_tree(training_data)
+def get_recommendations(username):
+	user_data = dbTesting.get_user_stocks_raw(username)
 
-# perform recommendations
-recommendations = []
-for i, row in enumerate(test_data):
-	result = predict(row, dt)
-	if result != 'do nothing':
-		symbol = STOCK_SYMBOLS[i]
-		stock_name = stock_info.getStockCompany(symbol)
-		
-		recommendation = [symbol, stock_name, result]
-		recommendations.append(recommendation)
+	# generate training and test data
+	training_data = generate_training()
+	test_data = generate_test(user_data)
+	dt = build_tree(training_data)
 
-''' FOR TESTING
+	# perform recommendations
+	recommendations = []
+	for i, row in enumerate(test_data):
+		result = predict(row, dt)
+		if result != 'do nothing':
+			symbol = STOCK_SYMBOLS[i]
+			stock_name = stock_info.getStockCompany(symbol)
+			
+			recommendation = [symbol, stock_name, result]
+			recommendations.append(recommendation)
+
+	return recommendations
+
+
+# ------------------------------------------------------------------------------
+# MAIN END
+#-------------------------------------------------------------------------------
+
+username = 'lawrenceselfridge'
+recommendations = get_recommendations(username)
+
 print('Recommendations for ', username, ':')
 for recommendation in recommendations:
 	print(recommendation)
-'''
-
-# ------------------------------------------------------------------------------
-# SCRIPT END
-#-------------------------------------------------------------------------------
