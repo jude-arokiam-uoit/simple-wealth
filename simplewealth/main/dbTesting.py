@@ -74,8 +74,8 @@ def perform_transaction(username, symbol, shares, transaction_type):
 	#stock = Stocks.objects.get(symbol = symbol)
 	share = Shares.objects.get(username = username)
 
-	new_transaction = Transactions(user_id=user, stock_id=symbol, timestamp=datetime.datetime.now(),number_of_shares=shares, transaction_type=transaction_type)
-	new_transaction.save()	
+	new_val = Transactions(user_id=username,stock_id=symbol,timestamp=datetime.datetime.now(),number_of_shares=shares,transaction_type=transaction_type)
+	new_val.save();
 
 	if transaction_type == "+":
 		#subtract stock amount purchased from users wallet

@@ -59,6 +59,9 @@ def delete_all_transactions():
 def delete_all_users():
 	Users.objects.all().delete()
 
+def delete_all_stocks():
+	Transactions.objects.all().delete()
+
 def get_table_array(table):
 	table_list = table.objects.all().values_list()
 	table_array = np.core.records.fromrecords(table_list, names=[f.name for f in table._meta.fields])
@@ -145,7 +148,6 @@ def get_user_stocks_and_price(username):
 		column = 0			
 
 	return user_stocks
-
 #empty_all_tables()
 #Users.objects.all().delete()
 #create_user("1005559999", "1005559999", "mit", "jud", 1, 100.0)
