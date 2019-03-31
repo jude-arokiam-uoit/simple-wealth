@@ -54,8 +54,8 @@ class Transactions(models.Model):
 	)
 
 	transaction_id = models.AutoField(primary_key=True)
-	user = models.ForeignKey(Users, on_delete=models.CASCADE)
-	stock = models.ForeignKey(Stocks, on_delete=models.CASCADE)
+	user_id = models.CharField(max_length=5)
+	stock_id = models.CharField(max_length=5)
 	timestamp = models.DateTimeField(auto_now_add=True)
 	number_of_shares = models.FloatField(default=0)
 

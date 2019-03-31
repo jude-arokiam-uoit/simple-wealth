@@ -7,9 +7,12 @@
 <label>{{cash}}</label>
 <br />
 <form method="post">
+	{% csrf_token %}
 	<label>Buy or Sell</label>
-	<input type="radio" id='sell'>Sell</input>
-	<input type="radio" id='buy'>Buy</input>
+	<select name='buySell' value="Buy or Sell">
+	  <option value="+">Buy</option>
+	  <option value="-">Sell</option>
+	</select>
 	<br />
 	<label>stock symbol</label>
 	<input type="text" name="stock">

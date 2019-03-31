@@ -71,10 +71,10 @@ def get_last_ten_transactions():
 #transaction_type: True = buy, False = sell
 def perform_transaction(username, symbol, shares, transaction_type):
 	user = Users.objects.get(username = username)
-	stock = Stocks.objects.get(symbol = symbol)
+	#stock = Stocks.objects.get(symbol = symbol)
 	share = Shares.objects.get(username = username)
 
-	new_transaction = Transactions(user=user, stock=stock, timestamp=datetime.datetime.now(),number_of_shares=shares, transaction_type=transaction_type)
+	new_transaction = Transactions(user_id=user, stock_id=symbol, timestamp=datetime.datetime.now(),number_of_shares=shares, transaction_type=transaction_type)
 	new_transaction.save()	
 
 	if transaction_type == "+":

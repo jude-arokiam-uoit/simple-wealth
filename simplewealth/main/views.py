@@ -1,9 +1,10 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from main.dbTesting import get_user,get_user_stocks_and_price
+from main.dbTesting import get_user,get_user_stocks_and_price,perform_transaction
 import matplotlib.pyplot as plt
 import stock_info
 from main.ai import get_recommendations
+import os
 
 def index(request):
     return render(request, 'main/home.html')
@@ -23,7 +24,12 @@ def dash(request):
 	return render(request, 'main/dash.html',{"stocks":U_stocks,"cash":user.values_list()[0][5], "reccomend":ai})
 
 def buy_sell(request):
+	if request.method == "POST":
+		stock = request.POST['stock']
+		choice = "+"#request.POST['buySell']
+		amount = int(request.POST['numStock'])
+		print(request.user.username)
+		perform_transaction(request.user.username,stock,amount,choice)
 	user = request.user
-	user = get_user("isaaccarone")
-	U_stocks = get_user_stocks_and_price(user.values_list()[0][0])
-	return render(request, 'main/buy_sell.html',{"stocks":stocks,"last":U_stocks,"cash":user.values_list()[0][5]})
+	return render(request, 'main/buy_sell.html')
+
